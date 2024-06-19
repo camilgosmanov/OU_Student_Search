@@ -194,7 +194,33 @@
         const pagination = document.getElementById('pagination');
         pagination.innerHTML = '';
 
-        for (let i = 1; i <= totalPages; i++) {
+        const startPage = Math.max(1, currentPage - 2);
+        const endPage = Math.min(totalPages, startPage + 4);
+
+        // Start button
+        const startButton = document.createElement('a');
+        startButton.textContent = 'Start';
+        startButton.href = '#';
+        startButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            displayResults(results, 1);
+        });
+        pagination.appendChild(startButton);
+
+        // Previous button
+        if (currentPage > 1) {
+            const prevButton = document.createElement('a');
+            prevButton.textContent = '<';
+            prevButton.href = '#';
+            prevButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                displayResults(results, currentPage - 1);
+            });
+            pagination.appendChild(prevButton);
+        }
+
+        // Page numbers
+        for (let i = startPage; i <= endPage; i++) {
             const a = document.createElement('a');
             a.textContent = i;
             a.href = '#';
@@ -205,6 +231,28 @@
             });
             pagination.appendChild(a);
         }
+
+        // Next button
+        if (currentPage < totalPages) {
+            const nextButton = document.createElement('a');
+            nextButton.textContent = '>';
+            nextButton.href = '#';
+            nextButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                displayResults(results, currentPage + 1);
+            });
+            pagination.appendChild(nextButton);
+        }
+
+        // End button
+        const endButton = document.createElement('a');
+        endButton.textContent = 'End';
+        endButton.href = '#';
+        endButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            displayResults(results, totalPages);
+        });
+        pagination.appendChild(endButton);
     }
 
         // Initial load
