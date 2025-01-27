@@ -164,7 +164,7 @@
         }
 
 
-        function displayResults(results, page) {
+function displayResults(results, page) {
     console.log("Displaying results..."); // Debug
     currentPage = page;
     const start = (page - 1) * resultsPerPage;
@@ -194,7 +194,22 @@
             // Align row data with column order
             columnOrder.forEach(column => {
                 const td = document.createElement('td');
-                td.textContent = row[column] || ""; // Safeguard for missing data
+                const value = row[column] || ""; // Safeguard for missing data
+
+                // Apply color styling
+                if (value === "Yes") {
+                    td.textContent = value;
+                    td.style.color = "green";
+                } else if (value === "Yes*") {
+                    td.textContent = value;
+                    td.style.color = "darkgreen"; // Darker green for "Yes*"
+                } else if (value === "No") {
+                    td.textContent = value;
+                    td.style.color = "red";
+                } else {
+                    td.textContent = value;
+                }
+
                 tr.appendChild(td);
             });
 
@@ -205,7 +220,6 @@
     const totalResults = results.length;
     displayPagination(results, totalResults);
 }
-
 
 
 
