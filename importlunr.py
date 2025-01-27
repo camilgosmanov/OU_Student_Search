@@ -20,11 +20,12 @@ column_names[8] = 'Fall 2020'  # Rename 'Unnamed: 9' to 'Fall 2020'
 column_names[9] = 'Fall 2021'  # Rename 'Unnamed: 10' to 'Fall 2021'
 column_names[10] = 'Fall 2022'  # Rename 'Unnamed: 11' to 'Fall 2022'
 column_names[11] = 'Fall 2023'  # Rename 'Unnamed: 12' to 'Fall 2023'
-column_names[12] = 'Spring 2020'  # Rename 'Unnamed: 13' to 'Spring 2020'
-column_names[13] = 'Spring 2021'  # Rename 'Unnamed: 14' to 'Spring 2021'
-column_names[14] = 'Spring 2022'  # Rename 'Unnamed: 15' to 'Spring 2022'
-column_names[15] = 'Spring 2023'  # Rename 'Unnamed: 16' to 'Spring 2023'
-column_names[16] = 'Spring 2024'  # Rename 'Unnamed: 16' to 'Spring 2023'
+column_names[12] = 'Fall 2024'  # Rename 'Unnamed: 12' to 'Fall 2023'
+column_names[13] = 'Spring 2020'  # Rename 'Unnamed: 13' to 'Spring 2020'
+column_names[14] = 'Spring 2021'  # Rename 'Unnamed: 14' to 'Spring 2021'
+column_names[15] = 'Spring 2022'  # Rename 'Unnamed: 15' to 'Spring 2022'
+column_names[16] = 'Spring 2023'  # Rename 'Unnamed: 16' to 'Spring 2023'
+column_names[17] = 'Spring 2024'  # Rename 'Unnamed: 16' to 'Spring 2023'
 
 # Create a list of dictionaries with column names
 students_dict = [dict(zip(column_names, row)) for row in students]
