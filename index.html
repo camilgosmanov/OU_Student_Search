@@ -95,16 +95,16 @@
                     <th>State</th>
                     <th>Score</th>
                     <th>Fall 2019</th>
-                    <th>Fall 2020</th>
-                    <th>Fall 2021</th>
-                    <th>Fall 2022</th>
-                    <th>Fall 2023</th>
-                    <th>Fall 2024</th>
                     <th>Spring 2020</th>
+                    <th>Fall 2020</th>
                     <th>Spring 2021</th>
+                    <th>Fall 2021</th>
                     <th>Spring 2022</th>
+                    <th>Fall 2022</th>
                     <th>Spring 2023</th>
+                    <th>Fall 2023</th>
                     <th>Spring 2024</th>
+                    <th>Fall 2024</th>
                 </tr>
             </thead>
             <tbody>
@@ -165,30 +165,49 @@
 
 
         function displayResults(results, page) {
-            console.log("Displaying results..."); // Debug
-            currentPage = page;
-            const start = (page - 1) * resultsPerPage;
-            const end = start + resultsPerPage;
-            const paginatedResults = results.slice(start, end);
+    console.log("Displaying results..."); // Debug
+    currentPage = page;
+    const start = (page - 1) * resultsPerPage;
+    const end = start + resultsPerPage;
+    const paginatedResults = results.slice(start, end);
 
-            const tbody = document.querySelector('#results-table tbody');
-            tbody.innerHTML = '';
+    const tbody = document.querySelector('#results-table tbody');
+    tbody.innerHTML = '';
 
-            paginatedResults.forEach(row => {
-                if (row) {
-                    const tr = document.createElement('tr');
-                    Object.values(row).forEach(cell => {
-                        const td = document.createElement('td');
-                        td.textContent = cell;
-                        tr.appendChild(td);
-                    });
-                    tbody.appendChild(tr);
-                }
+    // Define the desired column order (match this with your <th> header order)
+    const columnOrder = [
+        "ID", "Full Name", "Middle Name", "Last Name", 
+        "City", "State", "Score",
+        "Fall 2019", "Spring 2020", 
+        "Fall 2020", "Spring 2021", 
+        "Fall 2021", "Spring 2022", 
+        "Fall 2022", "Spring 2023", 
+        "Fall 2023", "Spring 2024", 
+        "Fall 2024"
+    ];
+
+    // Render rows in the desired order
+    paginatedResults.forEach(row => {
+        if (row) {
+            const tr = document.createElement('tr');
+
+            // Align row data with column order
+            columnOrder.forEach(column => {
+                const td = document.createElement('td');
+                td.textContent = row[column] || ""; // Safeguard for missing data
+                tr.appendChild(td);
             });
-            
-            const totalResults = results.length;
-            displayPagination(results, totalResults);
-    }
+
+            tbody.appendChild(tr);
+        }
+    });
+
+    const totalResults = results.length;
+    displayPagination(results, totalResults);
+}
+
+
+
 
     function displayPagination(results, totalResults) {
         const totalPages = Math.ceil(totalResults / resultsPerPage);
