@@ -26,6 +26,7 @@ column_names[14] = 'Spring 2021'  # Rename 'Unnamed: 14' to 'Spring 2021'
 column_names[15] = 'Spring 2022'  # Rename 'Unnamed: 15' to 'Spring 2022'
 column_names[16] = 'Spring 2023'  # Rename 'Unnamed: 16' to 'Spring 2023'
 column_names[17] = 'Spring 2024'  # Rename 'Unnamed: 16' to 'Spring 2023'
+column_names[18] = 'Spring 2025'  # Rename 'Unnamed: 17' to 'Spring 2024'
 
 # Create a list of dictionaries with column names
 students_dict = [dict(zip(column_names, row)) for row in students]
